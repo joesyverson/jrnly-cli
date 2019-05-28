@@ -42,10 +42,10 @@
         `27 MAY 2019` | Joseph Syverson
         -----------------------------------------------------------
         `NOTES`                   `DID`                      `DO`
-        = Visited cousins in      = Pay rent                 = Laundry
-        LI today instead of       = Finished Active Record   = Food shopping
+        = Visited cousins in      = Pay rent                 = Laundry($)
+        LI today instead of       = Finished Active Record   = Food shopping(&)
         locking myself in my      labs                       = Brainstorm about
-        and studying. Good idea                               Mod 1 project
+        and studying. Good idea                               Mod 1 project($)
         = Spoiling a good time
         worrying about the
         future of the human
