@@ -5,7 +5,7 @@ class CreateNotes < ActiveRecord::Migration[5.0]
       t.string  :body
       t.string  :link
       # t.string  :img_url
-      t.string  :tag_id
+      t.integer  :tag_id
       t.timestamps
     end
   end

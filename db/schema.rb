@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20190528214906) do
     t.string   "title"
     t.string   "body"
     t.string   "link"
-    t.string   "tag_id"
+    t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20190528214906) do
     t.string   "title"
     t.string   "description"
     t.string   "link"
-    t.string   "tag_id"
+    t.integer  "tag_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
