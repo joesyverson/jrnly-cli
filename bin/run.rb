@@ -1,7 +1,37 @@
 require_relative '../config/environment'
 
+prompt = TTY::Prompt.new
 
-puts "Welcome to JRNLY, your new favorite journal app! Log in, or sign up!"
+puts "Welcome to JRNLY, your new favorite journal app!"
+
+answer = prompt.yes?('Are you an existing user?')
+
+if answer == true
+    username = prompt.ask('What is your username?')
+    password = prompt.mask('What is your password?')
+    user = User.all.find_by(name: username)
+
+else answer == false
+    username = prompt.ask('Please create a username')
+    password = prompt.mask('Please create a password')
+    user = User.create(name: username, password: password)
+end
+
+puts "Hello #{user}!!! Welcome to you JRNLY!!!"
+puts "Here are your messages"
+if user.messages == []
+    puts "You have nothing in your JRNLY, why don't you add something! What would you like to add?"
+    message_type = prompt.select("Choose your message type", %w(To-Do Note Post))
+    binding.pry
+
+else 
+    puts user.tags
+end
+puts ""
+puts ""
+
+
+
   # are you a returning user?
     # if yes, sign in
       # request password
