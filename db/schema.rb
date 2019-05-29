@@ -10,20 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190529143258) do
+ActiveRecord::Schema.define(version: 20190529175511) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.string   "link"
-    t.boolean  "post"
-    t.boolean  "note"
-    t.boolean  "to_do"
     t.integer  "user_id"
     t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "completed"
+    t.string   "status"
   end
 
   create_table "tags", force: :cascade do |t|
