@@ -1,7 +1,7 @@
-User.create(name: "Joey")
+# user1 = User.create(name: "Carla", birthday: 1983-06-27)
+# user2 = User.create(name: "Joe", birthday: 1989-09-24)
+# user3 = User.create(name: "Mark", birthday: 1985-09-16)
 
-Tag.create(name: "School", user_id: 1)
-
-ToDo.create(title: "Homework", description: "Do your mother fucking homework you lazy bum!!", tag_id: 1)
-
-Note.create(title: "Last Night", body: "Last night I had a terrible sleep and I feel awful today and I wish that I could go home and sleep some more, but unfortunetly I am stuck at school and i want to stikc a pencil in my eye!!!!", tag_id: 1)
+# tag1 = Tag.create(name: "Groceries")
+# tag2 = Tag.create(name: "Chores")
+# tag3 = Tag.create(name: "Work")

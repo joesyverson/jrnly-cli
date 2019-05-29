@@ -10,34 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190528214906) do
+ActiveRecord::Schema.define(version: 20190529143258) do
 
-  create_table "notes", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.string   "link"
+    t.boolean  "post"
+    t.boolean  "note"
+    t.boolean  "to_do"
+    t.integer  "user_id"
     t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "completed"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "user_id"
-  end
-
-  create_table "to_dos", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "link"
-    t.integer  "tag_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "birthday"
+    t.integer  "zipcode"
+    t.string   "password"
   end
 
 end
