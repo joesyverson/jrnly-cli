@@ -4,6 +4,8 @@ Bundler.require
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'db/development.db')
 require_all 'lib'
 
+ActiveRecord::Base.logger = nil
+
 
 # def display_home(user)
 #     puts "Hello #{user}!!! Welcome to you JRNLY!!!"
