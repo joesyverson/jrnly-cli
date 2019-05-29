@@ -2,23 +2,35 @@ require_relative '../config/environment'
 
 
 puts "Welcome to JRNLY, your new favorite journal app! Log in, or sign up!"
+  # are you a returning user?
+    # if yes, sign in
+      # request password
+    # if no, sign up
+      # create username, password
+        # would you like to enter your birthday for daily horoscope?
+        # zip for weather?
+          # create account with hash
 
-prompt = TTY::Prompt.new
+# welcome to user account
+# output horoscope
+# out weather
+# output journal
+  # initialize empty columns with suggestion to add messages
 
-yesorno = prompt.yes?('Are you a returning user?')
+# provides an option to create a todo, note or post
+  # prompt user for tag, provide existing tags, default argument of "general"
+# provides an option to modify or destroy existing messages
+  #
 
-
-# user puts in their information
-
-# automatically output today's messages
-
-# provides an option to create a new message
 
 # provides options to sort messages
-
-# provide an option for destroying and modifying a message
-    # "Would you like to change an existing message?"
-    # "Would you like to delete an existing message?"
+  # by tag
+    # provide list of avaiable tags
+      # allow user to chose tag
+        # output all messages with that tag
+  # by date
+    # ask for input date
+      # output messages for date
 
 # exit
 

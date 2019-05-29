@@ -40,6 +40,8 @@
 
 
         `27 MAY 2019` | Joseph Syverson
+        [weather]
+        [horoscope]
         -----------------------------------------------------------
         `NOTES`                   `DID`                      `DO`
         = Visited cousins in      = Pay rent                 = Laundry($)
