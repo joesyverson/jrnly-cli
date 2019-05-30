@@ -5,12 +5,11 @@ class Tag < ActiveRecord::Base
 
 
   def self.tag_names
-    self.all.map {|tag| tag.name}
+    self.all.each do |tag| 
+      puts tag.name
+    end
   end
 
-  # def self.posts
-  #   Message.all.select {|message| message.status == "Post"}
-  # end
 
   def posts_by_tag_name
     puts ""

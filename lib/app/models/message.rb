@@ -22,8 +22,9 @@ class Message < ActiveRecord::Base
     counter = 0
     posts.map do |message|
         author = User.find_by(id: message.user_id).name
-        puts "#{counter += 1}: #{message.title} -- #{message.body} (#{author})"
+        puts "#{counter += 1}: #{message.title} -- #{message.body} (By: #{author}) *#{Tag.find_by(id: message.tag_id).name}*" 
     end
+    sleep(2)
   end
 
 end
