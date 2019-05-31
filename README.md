@@ -7,7 +7,7 @@
 * As noted above, *Jrnly* stores three types of data:
   - `Notes` are any thoughts the user wants to right down that are private and ought to be preserved. They are wiped from the user's home page each day
   - `To-dos` are like notes in that they are private, but they are not wiped from the user's home page until the user marks them complete. Any to-dos that are not marked complete by day-end roll over to the following day
-  - `Posts` are like notes except that they are public. They're displayed on the user's `community board` with their corresponding authors and `tags`
+  - `Posts` are like notes in that they are wiped from the user's home page each day, except that they are public. They're displayed on the user's `community board` with their corresponding authors and `tags`
 
 * A *Jrnly* entry is a sectioned list of all notes and posts for the present day, as well as any to-dos not yet complete
 
