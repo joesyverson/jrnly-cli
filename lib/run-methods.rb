@@ -5,23 +5,31 @@ def welcome(prompt)
     if answer == true
         username = prompt.ask('What is your username?')
         password = prompt.mask('What is your password?')
-        user = User.all.find_by(name: username)
-        if user.password == password
-            display_home(user, prompt)
+        if User.all.find_by(name: username)
+            user = User.all.find_by(name: username)
+                if user.password == password && user.name == username
+                display_home(user, prompt)
+            else
+                puts "that password and username combination were incorrect, please try your password again or create a new account"
+                sleep(1)
+                welcome(prompt)
+            end
         else
-            puts "that password and username combination were incorrect, please try your password again or create a new account"
+            puts "That username does not exist, please create an account"
             sleep(1)
             welcome(prompt)
         end
     else 
         username = prompt.ask('Please create a username')
-        if username = User.all.find_by(name: username)
+        if User.all.find_by(name: username)
             puts "That username already exists, please choose another username"
             sleep(1)
             welcome(prompt)
         else
             password = prompt.mask('Please create a password')
+            # binding.pry
             user = User.create(name: username, password: password)
+            sleep(1)
             new_user(user, prompt)
         end
     end
@@ -56,13 +64,14 @@ def complete_todo(user, prompt)
     answer = prompt.ask("Please enter the number of the to-do you'd like to mark as complete, or type 'exit' to back")
         if answer == 'exit'
             search_page(user, prompt)
-        elsif TODOHASHES[-1].keys.include?(answer)
+        elsif TODOHASHES[-1].keys.include?(answer.to_i)
             body = TODOHASHES[-1][answer.to_i]
             completed = Message.find_by(body: body)
             completed.update(completed: true)
             user.reload
-            main_menu(user, prompt)
-        elsif TODOHASHES[-1].keys.include?(answer)
+            sleep(1)
+            display_home(user, prompt)
+        elsif TODOHASHES[-1].keys.include?(answer.to_i) == false
             puts "Please try a different number"
             sleep(1)
             complete_todo(user, prompt)
@@ -78,18 +87,6 @@ def main_menu(user, prompt)
             create_message(user, prompt)
         when "Complete_To_Do"
             complete_todo(user, prompt)
-            # answer = prompt.ask("Please enter the number of the to-do you'd like to mark as complete, or type 'exit' to back")
-            # if answer == 'exit'
-            #     search_page(user, prompt)
-            # elsif !TODOHASHES[-1].keys.include?(answer)
-            #     puts "Please try a different number"
-            # else
-            #     body = TODOHASHES[-1][answer.to_i]
-            #     completed = Message.find_by(body: body)
-            #     completed.update(completed: true)
-            #     user.reload
-            #     main_menu(user, prompt)
-            # end
         when "Home_Page"
             display_home(user, prompt)
         when "Delete_Account"

@@ -4,9 +4,7 @@ class Message < ActiveRecord::Base
   belongs_to :tag
 
   def self.all_posts
-    self.all.select do |message|
-        message.status == "Post"
-    end
+    self.where(status: "Post")
   end
 
   def self.todays_posts
@@ -24,7 +22,7 @@ class Message < ActiveRecord::Base
       puts "* select 'Create' below to add a new post *"
     else
       counter = 0
-      posts.map do |message|
+      posts.reverse.map do |message|
         author = User.find_by(id: message.user_id).name
         puts "#{counter += 1}: #{message.title} -- #{message.body} (By: #{author}) *#{Tag.find_by(id: message.tag_id).name}*" 
       end

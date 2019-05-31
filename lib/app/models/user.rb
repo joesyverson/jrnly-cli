@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :messages
+  has_many :messages, dependent: :destroy 
   has_many :tags, through: :messages
 
   def all_to_dos
