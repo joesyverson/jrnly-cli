@@ -11,7 +11,7 @@
 
 * A *Jrnly* entry is a sectioned list of all notes and posts for the present day, as well as any to-dos not yet complete
 
-Developed by Joseph Syverson and Carla Stickler
+Developed by Carla Stickler and Joseph Syverson
   May 2019
 
 https://github.com/joesyverson/jrnly-cli
