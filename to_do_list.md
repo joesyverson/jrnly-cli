@@ -1,5 +1,15 @@
 This is a to-do list::::
 
+------new notes---------
+-no repeat username
+-kicks you out when you type a number that doesn't exist in complete todo
+-posts should view newest first.. are not viewing more than7... so newpost are viewable....
+
+
+
+
+
+
 Create a landing page to return to that has options for how each user would like to proceed. Always have the user go back to that homepage after getting what they want. 
 
 Have an exit option to exit the app

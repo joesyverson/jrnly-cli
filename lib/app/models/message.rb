@@ -19,10 +19,15 @@ class Message < ActiveRecord::Base
       puts ""
     puts "---COMMUNITY BOARD POSTS---"
     puts "==========================="
-    counter = 0
-    posts.map do |message|
+    if posts.length == 0
+      puts "* no one from your community has posted today *"
+      puts "* select 'Create' below to add a new post *"
+    else
+      counter = 0
+      posts.map do |message|
         author = User.find_by(id: message.user_id).name
         puts "#{counter += 1}: #{message.title} -- #{message.body} (By: #{author}) *#{Tag.find_by(id: message.tag_id).name}*" 
+      end
     end
     sleep(2)
   end

@@ -1,5 +1,32 @@
 TODOHASHES = []
 
+def welcome(prompt)
+    answer = prompt.yes?('Are you an existing user?')
+    if answer == true
+        username = prompt.ask('What is your username?')
+        password = prompt.mask('What is your password?')
+        user = User.all.find_by(name: username)
+        if user.password == password
+            display_home(user, prompt)
+        else
+            puts "that password and username combination were incorrect, please try your password again or create a new account"
+            sleep(1)
+            welcome(prompt)
+        end
+    else 
+        username = prompt.ask('Please create a username')
+        if username = User.all.find_by(name: username)
+            puts "That username already exists, please choose another username"
+            sleep(1)
+            welcome(prompt)
+        else
+            password = prompt.mask('Please create a password')
+            user = User.create(name: username, password: password)
+            new_user(user, prompt)
+        end
+    end
+end
+
 def display_home(user, prompt)
     puts ""
     puts ""
@@ -25,24 +52,44 @@ def new_user(user, prompt)
     create_message(user, prompt)
 end
 
+def complete_todo(user, prompt) 
+    answer = prompt.ask("Please enter the number of the to-do you'd like to mark as complete, or type 'exit' to back")
+        if answer == 'exit'
+            search_page(user, prompt)
+        elsif TODOHASHES[-1].keys.include?(answer)
+            body = TODOHASHES[-1][answer.to_i]
+            completed = Message.find_by(body: body)
+            completed.update(completed: true)
+            user.reload
+            main_menu(user, prompt)
+        elsif TODOHASHES[-1].keys.include?(answer)
+            puts "Please try a different number"
+            sleep(1)
+            complete_todo(user, prompt)
+        end
+end
+
 def main_menu(user, prompt)
-    answer = prompt.select("Navigation Menu", %w(Search Create Complete_To_Do Home_Page Delete_Account Sign_Out))
+    answer = prompt.select("Main Menu", %w(Search Create Complete_To_Do Home_Page Delete_Account Sign_Out))
         case answer
         when "Search"
             search_page(user, prompt)
         when "Create"
             create_message(user, prompt)
         when "Complete_To_Do"
-            answer = prompt.ask("Please enter the number of the to-do you'd like to mark as complete, or type 'exit' to back")
-            if answer == 'exit'
-                search_page(user, prompt)
-            else
-                body = TODOHASHES[-1][answer.to_i]
-                completed = Message.find_by(body: body)
-                completed.update(completed: true)
-                user.reload
-                main_menu(user, prompt)
-            end
+            complete_todo(user, prompt)
+            # answer = prompt.ask("Please enter the number of the to-do you'd like to mark as complete, or type 'exit' to back")
+            # if answer == 'exit'
+            #     search_page(user, prompt)
+            # elsif !TODOHASHES[-1].keys.include?(answer)
+            #     puts "Please try a different number"
+            # else
+            #     body = TODOHASHES[-1][answer.to_i]
+            #     completed = Message.find_by(body: body)
+            #     completed.update(completed: true)
+            #     user.reload
+            #     main_menu(user, prompt)
+            # end
         when "Home_Page"
             display_home(user, prompt)
         when "Delete_Account"
@@ -99,7 +146,7 @@ def search_page(user, prompt)
         when "My_Completed_To_Dos"
             user.put_to_dos(user.completed_todos)
             sleep(2)
-            search_page(user, prompt)
+            main_menu(user, prompt)
         when "View_All_Tags"
             Tag.tag_names
             sleep(2)

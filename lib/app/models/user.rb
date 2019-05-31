@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     puts "============"
     if todos.length == 0
       puts "* no to-dos logged today *"
-      puts "* click 'Create' below to add a to-do *"
+      puts "* click 'Create' below to add a new to-do *"
     else
       counter = 0
       to_do_hash = Hash.new
@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
     puts "==========="
     if notes.length == 0
       puts "* you have no notes *"
-      puts "* click 'Create' below to add a to-do *"
+      puts "* click 'Create' below to add a new note *"
     else
       counter = 0
       notes.map do |message|
@@ -72,78 +72,5 @@ class User < ActiveRecord::Base
     end
     sleep(1)
   end
-
-  # ----- RUN METHODS--------
-
-  # def display_home(prompt)
-  #   puts "Hello #{self.name}!!! Here's your JRNLY for today!"
-  #   puts ""
-  #   puts "Here's whatcha got"
-  #   sleep(1)
-  #   self.put_to_dos
-  #   self.put_notes
-  #   Message.put_all_posts
-  #   puts ""
-  #   puts ""
-  #   main_menu(prompt)
-  # end
-
-  # def new_user(prompt)
-  #   puts ""
-  #   puts ""
-  #   puts "Hello #{self.name}!!! Welcome to your new JRNLY!"
-  #   puts ""
-  #   puts "You have nothing in your JRNLY, why don't you add something!"
-  #   create_message(prompt)
-  # end
-
-  # def main_menu(prompt)
-
-  #   answer = prompt.select("Navigation Menu", %w(Search Create Sign_out))
-  #     if answer == "Search"
-  #       search_page(prompt)
-  #     elsif answer == "Create"
-  #       create_message(prompt)
-  #     else
-  #       # exit
-  #     end
-  # end
-
-  # def create_message(prompt)
-  #   message_type = prompt.select("Choose your message type", %w(To-Do Note Post))
-  #   message_title = prompt.ask("Title your new #{message_type}")
-  #   message_body = prompt.ask("Write your #{message_type}")
-  #   tag_name = prompt.ask("Give your message a tag so you can search for it later")
-  #   message_tag = Tag.all.find_or_create_by(name: tag_name)
-  #   message = Message.create(title: message_title, body: message_body, status: message_type, user_id: self.id, tag_id: message_tag.id)
-
-  #   sleep(1)
-
-  #   display_home(prompt)
-
-  # end
-
-  # def search_page(prompt)
-  #   puts ""
-  #   puts ""
-
-  #   answer = prompt.select("What would you like find?", %w(Journal_page_by_date Community_board_posts_by_tag My_notes My_completed_to_dos Home_page))
-  #     if answer == "Journal_page_by_date"
-  #       # journal page by date
-  #     elsif answer == "Community_board_posts_by_tag"
-  #       # doens't exist
-  #     elsif answer == "My_notes"
-  #       self.put_notes
-  #       sleep(1)
-  #       search_page(prompt)
-  #     elsif answer == "My_completed_to_dos"
-  #       # doesn't exist
-  #     else 
-  #       display_home(prompt)
-  #     end
-
-  # end
-
-
 
 end
